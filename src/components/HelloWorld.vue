@@ -1,11 +1,11 @@
 <template>
-<div id="watch-example">
-  <p>
-    Ask a yes/no question:
-    <input v-model="message">
-  </p>
-  <p>{{ answer }}</p>
-</div>
+  <div id="watch-example">
+    <p>
+      Ask a yes/no question:
+      <input v-model="message">
+    </p>
+    <p v-bind:class="classObject">{{ answer }}</p>
+  </div>
 </template>
 
 <script>
@@ -16,9 +16,26 @@ export default {
   },
   data() {
     return {
-      message: "Word"
+      message: "Word",
+      answer: "test",
+      random: 0,
+      classObject: {
+        active: false,
+        'text-danger':false
+      }
     };
   },
+  watch:{
+    random(val){
+      this.classObject.active= this.random>0.5;
+      this.classObject['text-danger']= Math.random()>0.5;
+    }
+  },
+  created() {
+    setInterval(()=>{
+      this.random = Math.random();
+    }, 500);
+  }
 };
 </script>
 
@@ -36,5 +53,11 @@ li {
 }
 a {
   color: #42b983;
+}
+.active {
+  font-size: 25px;
+}
+.text-danger {
+  color: red;
 }
 </style>
