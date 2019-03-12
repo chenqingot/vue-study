@@ -5,6 +5,7 @@
       <input v-model="message">
     </p>
     <p v-bind:class="classObject">{{ answer }}</p>
+    <button @click="dotest">dotest</button>
   </div>
 </template>
 
@@ -35,6 +36,11 @@ export default {
     setInterval(()=>{
       this.random = Math.random();
     }, 500);
+  },
+  methods:{
+    dotest(){
+      alert("hello");
+    }
   }
 };
 </script>
