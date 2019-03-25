@@ -27,7 +27,7 @@ export default {
     };
   },
   watch:{
-    random(val){
+    random(){
       this.classObject.active= this.random>0.5;
       this.classObject['text-danger']= Math.random()>0.5;
     }
